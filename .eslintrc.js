@@ -1,11 +1,15 @@
 module.exports = {
-  'env': {
-    'node': true
-  },
+  'extends': 'eslint:recommended',
   'plugins': [
     'flowtype'
   ],
-  'extends': 'eslint:recommended',
+  'env': {
+    'node': true
+  },
+  'parserOptions': {
+    'ecmaVersion': 6,
+    'sourceType': 'module',
+  },
   'rules': {
     'indent': [
       'error',

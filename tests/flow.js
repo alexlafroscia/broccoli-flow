@@ -1,13 +1,10 @@
-var resolve = require('path').resolve;
+import { resolve } from 'path';
 
-var expect = require('chai').expect;
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
 
-var flow = require('../lib/flow');
-var checkFile = flow.checkFile;
-var readFile = flow.readFile;
-var checkFileContents = flow.checkFileContents;
-
-var FlowCheckFailure = require('../lib/error').FlowCheckFailure;
+import { checkFile, checkFileContents, readFile } from '../lib/flow';
+import { FlowCheckFailure } from '../lib/error';
 
 describe('flow module', function() {
   describe('readFile', function() {
@@ -18,18 +15,19 @@ describe('flow module', function() {
 
   describe('checkFileContents', function() {
     it('should export the function', function() {
-      expect(flow.checkFileContents).to.be.instanceof(Function);
+      expect(checkFileContents).to.be.instanceof(Function);
     });
   });
 
   describe('checkFile', function() {
     describe('function parameters', function() {
       [
-        { type: 'a number', value: 0 }, { type: 'undefined', value: undefined },
+        { type: 'a number', value: 0 },
+        { type: 'undefined', value: undefined },
         { type: 'null', value: null },
         { type: 'an invalid path', value: 'foo.js' }
       ].forEach(function(data) {
-        it('should reject when ' + data.type + ' is provided', function() {
+        it(`should reject when ${data.type} is provided`, function() {
           return checkFile(data.value)
             .catch(function(error) {
               expect(error).instanceof(Error);
@@ -49,6 +47,7 @@ describe('flow module', function() {
       return checkFile(resolve(__dirname, './input/invalid.js'))
         .catch(function(error) {
           expect(error).to.be.instanceof(FlowCheckFailure);
+          expect(error).to.be.instanceof(Error);
         });
     });
   });
