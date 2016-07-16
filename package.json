@@ -2,13 +2,20 @@
   "name": "broccoli-flow",
   "version": "0.0.1",
   "description": "Run Flow through Broccoli",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha tests/flow.js",
+    "build": "npm run build:lib && npm run build:test",
+    "build:lib": "babel lib --out-dir build/lib",
+    "build:test": "babel tests --ignore tests/input --out-dir build/tests && cp -R tests/input build/tests/input",
+    "cleanup": "rm -rf build dist",
+    "dist": "babel lib --out-dir dist",
+    "prepublish": "npm run dist",
+    "pretest": "npm run build",
+    "test": "mocha build/tests",
     "flow": "flow"
   },
   "keywords": [
-    "broccoli",
+    "broccoli-plugin",
     "flow"
   ],
   "author": "Alex LaFroscia <alex@lafroscia.com>",
@@ -18,7 +25,17 @@
     "flow-bin": "^0.29.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
     "chai": "^3.5.0",
     "mocha": "^2.5.3"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "ignore": [
+      "./tests/input/**/*.js"
+    ]
   }
 }
