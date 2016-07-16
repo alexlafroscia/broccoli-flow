@@ -1,0 +1,24 @@
+{
+  "name": "broccoli-flow",
+  "version": "0.0.1",
+  "description": "Run Flow through Broccoli",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests/flow.js",
+    "flow": "flow"
+  },
+  "keywords": [
+    "broccoli",
+    "flow"
+  ],
+  "author": "Alex LaFroscia <alex@lafroscia.com>",
+  "license": "MIT",
+  "dependencies": {
+    "broccoli-persistent-filter": "^1.2.6",
+    "flow-bin": "^0.29.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
