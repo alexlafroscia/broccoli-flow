@@ -11,11 +11,55 @@ describe('flow module', function() {
     it('should export the function', function() {
       expect(readFile).to.be.instanceof(Function);
     });
+
+    it('resolves with the content of a file', function() {
+      return readFile(`${__dirname}/input/read-file.js`)
+        .then(function(data) {
+          expect(data.trim()).to.equal('var foo = "bar";');
+        });
+    });
+
+    it('rejects when the file doesn\'t exist', function() {
+      return readFile(`${__dirname}/input/non-existant-file.js`)
+        .catch(function(error) {
+          expect(error).to.be.instanceof(Error);
+        });
+    });
   });
 
   describe('checkFileContents', function() {
     it('should export the function', function() {
       expect(checkFileContents).to.be.instanceof(Function);
+    });
+
+    it('should check the given content', function() {
+      const content = `
+        // @flow
+        function length(x): number {
+          return x.length;
+        }
+
+        length('Hellow, world!');
+      `;
+      return checkFileContents(content)
+        .then(function(data) {
+          expect(data.trim()).to.equal('No errors!');
+        });
+    });
+
+    it('should error when the file content is invalid', function() {
+      const content = `
+        // @flow
+        function length(x): string {
+          return x.length;
+        }
+
+        length('Hellow, world!');
+      `;
+      return checkFileContents(content)
+        .catch(function(error) {
+          expect(error).to.be.instanceof(FlowCheckFailure);
+        });
     });
   });
 
