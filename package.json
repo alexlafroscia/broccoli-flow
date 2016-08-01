@@ -25,8 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "broccoli-persistent-filter": "^1.2.6",
-    "flow-bin": "^0.29.0",
-    "rsvp": "^3.2.1"
+    "flow-bin": "^0.29.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -35,7 +34,6 @@
     "broccoli-funnel": "^1.0.3",
     "chai": "^3.5.0",
     "eslint": "^3.2.0",
-    "eslint-plugin-flowtype": "^2.4.0",
     "mocha": "^2.5.3"
   },
   "babel": {
