@@ -6,14 +6,16 @@ import { expect } from 'chai';
 
 import { Builder } from 'broccoli';
 import Funnel from 'broccoli-funnel';
+import { mv } from 'broccoli-stew';
 import FlowFilter from '../lib';
 
-function runFlowOnFile(fixtureFileName, printErrors = false) {
-  const tree = new Funnel(`${__dirname}/input`, {
-    files: [fixtureFileName],
-    destDir: 'output'
+function runFlowOnFile(fixtureFileName) {
+  let tree = new Funnel(`${__dirname}/input`, {
+    files: [fixtureFileName]
   });
-  return new FlowFilter(tree, { printErrors });
+  tree = new FlowFilter(tree, { printErrors: false });
+  tree = mv(tree, 'output');
+  return tree;
 }
 
 describe('broccoli plugin', function() {
