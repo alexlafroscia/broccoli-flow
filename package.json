@@ -10,11 +10,12 @@
     "cleanup": "npm run cleanup:build && npm run cleanup:dist",
     "cleanup:build": "rm -rf build",
     "cleanup:dist": "rm -rf dist",
+    "coverage": "npm run pretest && istanbul cover _mocha -- build/tests -R spec",
     "dist": "babel lib --out-dir dist",
     "lint": "eslint lib tests",
     "prepublish": "npm run dist",
-    "pretest": "npm run cleanup:build && npm run build",
-    "test": "npm run lint && mocha build/tests",
+    "pretest": "npm run lint && npm run cleanup:build && npm run build",
+    "test": "mocha build/tests",
     "flow": "flow"
   },
   "keywords": [
@@ -34,6 +35,7 @@
     "broccoli-funnel": "^1.0.3",
     "chai": "^3.5.0",
     "eslint": "^3.2.0",
+    "istanbul": "^0.4.4",
     "mocha": "^2.5.3"
   },
   "babel": {
