@@ -29,7 +29,7 @@ describe('broccoli plugin', function() {
     });
   });
 
-  it.only('checks the contents of an invalid file', function() {
+  it('checks the contents of an invalid file', function() {
     const tree = runFlowOnFile('invalid.js');
     const builder = new Builder(tree);
 
