@@ -8,12 +8,12 @@ import { Builder } from 'broccoli';
 import Funnel from 'broccoli-funnel';
 import FlowFilter from '../lib';
 
-function runFlowOnFile(fixtureFileName) {
+function runFlowOnFile(fixtureFileName, printErrors = false) {
   const tree = new Funnel(`${__dirname}/input`, {
     files: [fixtureFileName],
     destDir: 'output'
   });
-  return new FlowFilter(tree);
+  return new FlowFilter(tree, { printErrors });
 }
 
 describe('broccoli plugin', function() {
@@ -29,8 +29,8 @@ describe('broccoli plugin', function() {
     });
   });
 
-  it('checks the contents of an invalid file', function() {
-    let tree = runFlowOnFile('invalid.js');
+  it.only('checks the contents of an invalid file', function() {
+    const tree = runFlowOnFile('invalid.js');
     const builder = new Builder(tree);
 
     return builder.build()
