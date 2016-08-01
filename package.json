@@ -14,7 +14,7 @@
     "lint": "eslint lib tests",
     "prepublish": "npm run dist",
     "pretest": "npm run cleanup:build && npm run build",
-    "test": "mocha build/tests",
+    "test": "npm run lint && mocha build/tests",
     "flow": "flow"
   },
   "keywords": [
