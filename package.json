@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Run Flow through Broccoli",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npm run build:lib && npm run build:test",
     "build:lib": "babel lib --out-dir build/lib",
