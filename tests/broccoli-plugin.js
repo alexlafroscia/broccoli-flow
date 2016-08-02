@@ -19,6 +19,8 @@ function runFlowOnFile(fixtureFileName) {
 }
 
 describe('broccoli plugin', function() {
+  this.timeout(5000);
+
   it('checks the contents of a valid file', function() {
     const tree = runFlowOnFile('valid.js');
     const builder = new Builder(tree);
