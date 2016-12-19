@@ -1,7 +1,7 @@
-import { describe, it } from 'mocha';
-import { expect } from 'chai';
+const { describe, it } = require('mocha');
+const { expect } = require('chai');
 
-import checkFileContents from '../lib/flow-check-file';
+const checkFileContents = require('../lib/flow-check-file');
 
 describe('flow check file contents', function() {
   it('should export the function', function() {

@@ -1,13 +1,13 @@
-import { readFileSync, existsSync } from 'fs';
-import { join } from 'path';
+const { readFileSync, existsSync } = require('fs');
+const { join } = require('path');
 
-import { describe, it } from 'mocha';
-import { expect } from 'chai';
+const { describe, it } = require('mocha');
+const { expect } = require('chai');
 
-import { Builder } from 'broccoli';
-import Funnel from 'broccoli-funnel';
-import { mv } from 'broccoli-stew';
-import FlowFilter from '../lib';
+const { Builder } = require('broccoli');
+const Funnel = require('broccoli-funnel');
+const { mv } = require('broccoli-stew');
+const FlowFilter = require('../lib');
 
 function runFlowOnFile(fixtureFileName) {
   let tree = new Funnel(`${__dirname}/input`, {
