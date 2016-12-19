@@ -21,6 +21,9 @@
     "url": "https://github.com/alexlafroscia/broccoli-flow.git"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=6.7.0"
+  },
   "dependencies": {
     "broccoli-persistent-filter": "^1.2.6",
     "flow-bin": "0.37.0"
