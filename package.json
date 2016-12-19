@@ -33,7 +33,7 @@
   "license": "MIT",
   "dependencies": {
     "broccoli-persistent-filter": "^1.2.6",
-    "flow-bin": "^0.29.0"
+    "flow-bin": "0.37.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
